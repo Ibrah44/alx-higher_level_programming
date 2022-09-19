@@ -1,2 +1,2 @@
 # Python
-> ## holbertonschool-higher_level_programming
+> ## ALX-higher_level_programming
