@@ -14,6 +14,3 @@ This project is a combination of all the concepts that I have learnt in python s
 - args and kwargs
 - Serialization/Deserialization
 - JSON
-
-# Resources 
-- 
