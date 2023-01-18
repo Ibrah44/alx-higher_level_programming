@@ -1,3 +1,4 @@
 #!/bin/bash
-# Bash script that takes in a URL, sends a request to that URL, and displays the size of the body of the response
-curl -sI $1 | grep Content-Length | awk '{print $2}'
+# This is a script that takes in and send a request to that URL to display the size of the body response
+
+curl -sI "$1" | grep "Content-Length" | cut -d ' ' -f 2
