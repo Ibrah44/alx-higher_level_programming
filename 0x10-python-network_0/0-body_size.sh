@@ -1,3 +1,3 @@
 #!/bin/bash
-# ends a request to that URL displays the size of the response body
-curl -sI "$1" | grep -i Content-Length | cut -d " " -f2
+# Takes a URL, sends a request, and returns the size of the body
+curl -w '%{size_download}\n' -so /dev/null $1
