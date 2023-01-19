@@ -1,3 +1,3 @@
 #!/bin/bash
 # Takes a URL, sends a request, and returns the size of the body
-curl -sLX GET $1
+curl --head "$1" | grep 'Content-Length' | cut -d " " -f 2
