@@ -1,17 +1,27 @@
 #!/usr/bin/node
+
+// A scripts that computes the number of tasks completed by user id
+// Only prints users with completed task
+// must use the request module
+
 const request = require('request');
-request(process.argv[2], function (error, response, body) {
-  if (error) console.error(error);
-  const todos = JSON.parse(body);
-  const usersCompleted = {};
-  for (const todo of todos) {
-    if (todo.completed === true) {
-      if (todo.userId in usersCompleted) {
-        usersCompleted[todo.userId] += 1;
+const url = process.argv[2];
+
+request.get(url, { json: true }, (error, response, body) => {
+  if (error) {
+    console.log(error);
+    return;
+  }
+
+  const tasksCompleted = {};
+  body.forEach((todo) => {
+    if (todo.completed) {
+      if (!tasksCompleted[todo.userId]) {
+        tasksCompleted[todo.userId] = 1;
       } else {
-        usersCompleted[todo.userId] = 1;
+        tasksCompleted[todo.userId] += 1;
       }
     }
-  }
-  console.log(usersCompleted);
+  });
+  console.log(tasksCompleted);
 });
